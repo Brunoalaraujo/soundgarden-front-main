@@ -3,17 +3,13 @@ const form = document.getElementById('newEventForm');
 form.addEventListener('submit', (event) => {
     event.preventDefault()
 
-    const name = form.elements['nome']
-    const attraction = form.elements['atracoes']
-    const description = form.elements['descricao']
-    const date = form.elements['data']
-    const quantity = form.elements['lotacao']
+    let url = "https://xp41-soundgarden-api.herokuapp.com/events"
 
-    let nome = name.value
-    let atracao = attraction.value
-    let descricao = description.value
-    let data = date.value
-    let lotacao = quantity.value
+    let nome = form.elements['nome'].value
+    let atracao = form.elements['atracoes'].value
+    let descricao = form.elements['descricao'].value
+    let data = form.elements['data'].value
+    let lotacao = form.elements['lotacao'].value
 
    let novoEvento = {
         "name": nome,
@@ -25,14 +21,18 @@ form.addEventListener('submit', (event) => {
         "scheduled": data,
         "number_tickets": lotacao 
     }
-    
-    fetch("https://xp41-soundgarden-api.herokuapp.com/events", {
+
+    let request = new Request(url, {
         method: "POST",
         body: JSON.stringify(novoEvento),
-        headers: {"Content-type": "application/json; charset=UTF-8"}
+        headers: new Headers ({
+            'Content-type': 'application/json; charset=UTF-8'
+        })
     })
+    
+    fetch(request)
     .then(response => response.json()) 
     .then(json => console.log(json))
     .catch(err => console.log(err));
-
 });
+
