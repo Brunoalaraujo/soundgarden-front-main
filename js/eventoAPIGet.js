@@ -13,17 +13,17 @@ function carregarPg() {
           for (let i = 0; i < contador; i++) {
             htmlEventos += `
                 <tr>
-                <th scope="row">${i + 1}</th>
-                <td>${eventos[i].scheduled}</td>
-                <td>${eventos[i].name}</td>
-                <td>${eventos[i].attractions}</td>
-                <td>
-                    <a href="reservas.html" class="btn btn-dark">ver reservas</a>
-                    <a href="editar-evento.html?id=${
-                      eventos[i]._id
-                    }" class="btn btn-secondary">editar</a>
-                    <a href="excluir-evento.html" class="btn btn-danger">excluir</a>
-                </td>
+                  <th scope="row">${i + 1}</th>
+                  <td>${eventos[i].scheduled}</td>
+                  <td>${eventos[i].name}</td>
+                  <td>${eventos[i].attractions}</td>
+                  <td>
+                      <a href="reservas.html" class="btn btn-dark">ver reservas</a>
+                      <a href="editar-evento.html?id=${
+                        eventos[i]._id
+                      }" class="btn btn-secondary">editar</a>
+                      <a href="excluir-evento.html" class="btn btn-danger">excluir</a>
+                  </td>
                 </tr>
                 `;
           }
