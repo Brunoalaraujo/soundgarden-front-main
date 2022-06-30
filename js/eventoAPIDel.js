@@ -24,40 +24,17 @@ async function carregarEvento() {
 
 carregarEvento();
 
-const form = document.getElementById("editEventForm");
+const form = document.getElementById("delEventForm");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   let url = `https://xp41-soundgarden-api.herokuapp.com/events/${getId}`;
 
-  let nome = form.elements["nome"].value;
-  let banner = form.elements["banner"].value;
-  let atracao = form.elements["atracoes"].value;
-  let descricao = form.elements["descricao"].value;
-  let data = form.elements["data"].value;
-  let lotacao = form.elements["lotacao"].value;
-
-  let eventoEditado = {
-    name: nome,
-    poster: banner,
-    attractions: [atracao],
-    description: descricao,
-    scheduled: data,
-    number_tickets: lotacao,
-  };
-
-  let request = new Request(url, {
-    method: "PUT",
-    body: JSON.stringify(eventoEditado),
-    headers: new Headers({
-      "Content-type": "application/json; charset=UTF-8",
-    }),
-  });
-
-  fetch(request)
-    .then((response) => response.json())
-    .then(alert("ok"))
+  fetch(url, {
+    method: "DELETE"
+  })
+    .then(alert("Deletado"))
     .then(window.location.href = `${window.location.origin}/admin.html`)
     .catch((err) => console.log(err));
 });
